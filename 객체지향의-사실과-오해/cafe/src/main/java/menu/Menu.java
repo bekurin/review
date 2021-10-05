@@ -11,10 +11,12 @@ public class Menu {
         items.add(menuItem);
     }
 
-    public void viewMenu() {
+    public List<MenuItem> viewMenu() {
         for (MenuItem item : items) {
             System.out.println(item.getName() + ", " + item.getPrice() + "원");
         }
+
+        return items;
     }
 
     public MenuItem choose(String menuName) {

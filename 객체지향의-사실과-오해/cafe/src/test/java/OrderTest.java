@@ -9,34 +9,35 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-class CustomerTest {
+import static org.junit.jupiter.api.Assertions.*;
 
-    private List<String> menuNames = new ArrayList<>();
+class OrderTest {
+
     private Menu menu = new Menu();
     private Order order = new Order();
 
     @BeforeEach
-    public void init(){
+    public void init() {
         MenuItem bread = new Bread("식빵", 4500);
         MenuItem coffee = new Coffee("아메리카노", 3000);
         MenuItem cookie = new Cookie("초코쿠키", 1500);
-
-        menuNames.add(bread.getName());
-        menuNames.add(coffee.getName());
-        menuNames.add(cookie.getName());
 
         menu.addMenu(bread);
         menu.addMenu(coffee);
         menu.addMenu(cookie);
     }
-
+    
     @Test
-    void order() throws Exception {
+    public void makeOrder() throws Exception {
         //given
-        Customer customer = new Customer();
+        MenuItem choose = menu.choose("식빵");
 
         //when
-        customer.order(menuNames, menu, order);
-    }
+        MenuItem makeMenu = order.makeOrder(choose);
 
+        //then
+        assertEquals(makeMenu.getName(), choose.getName());
+        assertEquals(makeMenu.getPrice(), choose.getPrice());
+        assertEquals(makeMenu.getCategory(), choose.getCategory());
+    }
 }
