@@ -1,0 +1,19 @@
+## 자바 웹 프로그래밍 Next Step
+Spring mvc을 공부하면서 그 구조를 자세하게 이해하는 것이 중요하다고 생각하여 책을 읽기 시작했습니다.
+
+### 1~2장 공부하는 방법
+- 3단계 공부법
+
+### 3~5장 httpServlet의 구조
+- Http Header
+- Http Body
+- GET, POST
+- Refactoring
+
+### 6장~12장 MVC 프레임워크 구현
+- 세션과 쿠키
+- FrontController Pattern
+- DB 사용하여 데이터 영구 저장
+- AJAX를 사용하여 데이터 갱신
+- 프레임워크 점진적 개선
+- DI 의존성 주입을 통한 테스트 코드 작성
