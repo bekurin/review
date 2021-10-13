@@ -1,5 +1,7 @@
 ## 객체지향의 사실과 오해
 
+<img src="https://github.com/piaochung/review/blob/main/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98-%EC%82%AC%EC%8B%A4%EA%B3%BC-%EC%98%A4%ED%95%B4/images/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%EC%9D%98-%EC%82%AC%EC%8B%A4%EA%B3%BC-%EC%98%A4%ED%95%B4.jpg" width="300">
+
 내가 하는게 개발이 아니라 단순 기능 구현이라고 느껴지게 되어서 객체지향의 설계에 대해 보다 심도있는 고민을 하기 위해서 시작하였드아.
 
 > 우리가 프로그래머라는 역할을 맡을 수 있는 이유는 휼륭한 프로그램을 개발할 책임을 기꺼이 받아들이기 때문이다.
