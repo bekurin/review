@@ -1,5 +1,7 @@
 ## Node.js 교과서
 
+<img src = "https://github.com/piaochung/review/blob/main/Node.js-%EA%B5%90%EA%B3%BC%EC%84%9C/images/node.js-%EA%B5%90%EA%B3%BC%EC%84%9C.jfif" width="300">
+
 웹서버프로그래밍 수업의 교재로 사용하여 공부를 시작하였습니다.
 
 ### 노드는 무엇인가?
