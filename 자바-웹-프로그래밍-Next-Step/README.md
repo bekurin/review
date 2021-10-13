@@ -1,4 +1,7 @@
 ## 자바 웹 프로그래밍 Next Step
+
+<img src="https://github.com/piaochung/review/blob/main/%EC%9E%90%EB%B0%94-%EC%9B%B9-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-Next-Step/images/%EC%9E%90%EB%B0%94-%EC%9B%B9-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-Next-Step.jpg" width="300">
+
 Spring mvc을 공부하면서 그 구조를 자세하게 이해하는 것이 중요하다고 생각하여 책을 읽기 시작했습니다.
 
 ### 1~2장 공부하는 방법
