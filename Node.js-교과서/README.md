@@ -38,3 +38,16 @@
 ---
 
 ### http 모듈로 서버 만들기
+
+---
+
+### 프로젝트: guilty vs not guilty
+크고 작은 의견 차이가 발생했을 때 도대체 누구한테 물어봐야하는거야? 인터넷 현자들의 의견을 들어보자!!!
+
+Tech Stack:
+- Front-End: react
+- Back-End: node.js, express
+
+ BE를 REST API로 개발하기 위해서 FE를 react를 사용하여 따로 구현할 예정입니다.
+
+
