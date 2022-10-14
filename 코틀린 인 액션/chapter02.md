@@ -1,6 +1,7 @@
-### 코틀린  기초
+### 2장 코틀린  기초
 
 #### 함수
+---
 함수를 최상위 수준에 정의할  수 있다. 
 - 클래스 안에 함수를 넣을 필요가 없다.
 - 하나의 파일에 함수만 여러 개 정의하는 것도 가능하다.
@@ -40,6 +41,7 @@ fun max(a: Int, b: Int) =
 🥕 협업의 관점에서 보았을 때 타입 추론은 개발자가 코드를 해석하는 시간을 많이 사용하게 만들 수 있다고 생각한다. 따라서 식이 본문인 함수에도 타입을 명시하는 것이 좋을 것 같다.
 
 #### 변수
+---
 변수 선언 시 사용하는 키워드는 다음과 같다.
 
 > - val(값을 뜻하는 Value에서 따옴) - 변경 불가능한 참조를 저장하는 변수다.
@@ -85,6 +87,7 @@ void helloName(String name) {
 🥕 문자열 템플릿을 사용하게 되면 shift를 더 오랫동안 쓸 수 있을 것이다. 
 
 #### 클래스
+---
 같은 기능을 하는 클래스를 자바와 코틀린을 사용하여 구현해보겠다.
 
 ```java
@@ -116,6 +119,108 @@ class Person(
 🥕 참조에 따라 getter 또는 setter를 만들어주는 기능은 변수의 목적을 휠씬 잘 표현하는 것 같다.
 
 #### 프로퍼티
+---
 프로퍼티는 필드와 접근자를 한데 묶는 개념을 말한다.
+- val: 읽기 전용 프로퍼티로, 코틀린 컴파일러는 필드와 getter를 만든다.
+- var: 읽기 쓰기 전용 프로퍼티로, 코틀린 컴파일러는 필드와 getter, setter를 만든다.
 
--- p.72 많구만
+다음은 읽기 전용 프로퍼티 name과 age를 가져오는 방법에 있어 코틀린과 자바의 차이를 보인 것이다.
+
+읽기 전용 프로퍼티 (java)
+```java
+public class Person {
+	private final String name;
+	private final int age;
+
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+}
+
+>> Person person = new Person("hangman", 99)
+>> System.out.println(person.getName())
+>> hangman
+```
+
+읽기 전용 프로퍼티 (kotlin)
+~~~kotlin
+class Person(
+	val name: String,
+	val age: Int
+)
+
+>> person: Person = Person("hagnman", 99)
+>> println(person.name)
+>> hangman
+~~~
+
+자바는 프로퍼티의 목적에 따라 getter 또는 setter를 만들어줘야한다. 하지만 코틀린에서는 프로퍼티의 목적에 따라 키워드를 달리 해주면 컴파일러가 자동으로 getter 또는 setter를 만들어준다.
+
+프로퍼티를 읽는 과정에서도 차이가 보인다. 자바의 경우 개발자가 작성한 함수를 호출한다. 이에 반해 코틀린의 경우 객체의 필드 이름을 그대로 사용하여 값을 할당하면 setter로 값을 할당하지 않으면 getter로 동작하게 된다.
+
+🥕 자바의 경우 접근자를 private으로 만드는 것을 권장한다. 또한 private 필드에 대해서 getter와 setter를 만들 것을 권장한다. 권장은 필수는 아니라는 것이다. 혹시 필수가 아니기 때문에 만들지 않는다면 코드를 작성할 때에 문제를 직면하여 만들게 될 것이다.
+
+코틀린은 이런 문제를 컴파일러가 해결해준다. val의 경우 필드와 getter를 자동으로 제공하고, var의 경우 필드와 getter, setter를 자동으로 제공해준다.
+
+컴파일러가 자동으로 만들어주는 것으로 자바에서처럼 getter와 setter를 작성하는 수고를 덜고, 개발자의 실수를 막아주었다.
+
+#### 커스텀 접근자
+---
+커스텀 접근자는 코틀린 컴파일러가 만든 getter 또는 setter 말고, 개발자가 변수의 특성에 맞게 새롭게 정의한 것을 말한다.
+
+다음은 kotlin in action의 예제이다.
+
+~~~kotlin
+class Rectangle(var height: Int, var width: Int) {
+	val isSquare: Boolean
+		get() = height == width
+
+	fun isSquareFun(): Boolean =
+		height == width
+}
+~~~
+
+사각형을 정의한 클래스에서 높이와 너비를 입력 받는다. 정사각형인지 알려주는 기능이 새로운 요구사항으로 발생했다. 그렇다면 별도의 필드에 값을 저장할 필요없이 커스텀 접근자를 사용하여 그때그때 너비와 높이가 같은지 계산하여 정사각형 여부를 알 수 있다.
+
+위의 코드는 정사각형 여부를 판단하는 기능을 커스텀 접근자와 함수를 사용하여 구현한 것이다. 다음은 kotlin in action에서 커스텀 접근자를 사용해야할 상황에 대해 기술한 것이다.
+
+> 일반적으로 클래스의 특성(프로퍼티에는 특성이라는 뜻이 있다)을 정의하고 싶다면 프로퍼티로 그 특성을 정의해야한다.
+> kotlin in action p.74
+
+🥕 코틀린의 커스텀 접근자는 그때그때 값을 계산하기 때문에 클라이언트가 프로퍼티에 접근할 때마다 getter가 프로퍼티 값을 매번 다시 계산한다. 요구사항 중에 주기적으로 값이 바꿔져 상태를 확인해야하는 것이 있다면 사용을 생각해보면 좋을 것 같다.
+
+#### 선택 표현과 처리: enum과 when
+---
+enum은 열거형으로 타입이나 상태를 저장할 때 많이 사용한다. String이나 Int 등의 타입으로 상태를 저장하면 분명 실수 발생하기 마련이기 때문이다. 타입과 상태에 대한 예는 다음과 같다.
+- npc의 타입이 일반타입(normal), 상인(merchant), 퀘스트(quest) 등으로 나눠져있다면 npc의 상태를 저장하기 위해 enum을 사용한다.
+- 배달 주문을 하는 과정에 있어 결제 완려 후 대기 상태(ready), 사장님이 주문 확인 상태 (accept), 배달 상태 (delivery), 배달 완료 상태(complete)가 있다면 상태를 확인하기 위해 enum을 사용한다.
+
+다음은 배달 주문 과정을 enum 클래스로 정의한 것이다.
+~~~ kotlin
+enum class OrderState {
+	READY, ACCEPT, DELIVERY, COMPLETE
+}
+~~~
+
+다음은 주문 상태에 따라 행동을 다르게 하는 기능을 when절을 사용하여 구현한 것이다.
+```kotlin
+fun doSomethingBy(state: OrderState) {
+	when(state) {
+		state.READY -> "배달 준비 기능 실행!"
+		state.ACCEPT -> "주문 확인 기능 실행!"
+		state.DELIVERY -> "배달 기능 실행!"
+		state.COMPLETE -> "배달 완료 기능 실행!"
+	}
+}
+```
+
+🥕 지금의 enum 클래스는 단순히 정보를 열거하는 것을 넘어 enum 클래스 안에 프로퍼티 또는 함수를 정의할 수 있다. 
