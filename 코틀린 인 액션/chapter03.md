@@ -42,7 +42,7 @@ fun <T> Collection<T>.joinToString(
 kotlin in action의 정의대로 확장 함수는 클래스 밖에서 정의하기 때문에 클래스 내에 선언된 private, protected 변수에 대해 접근할 수 없다.
 
 확장 함수의 이해하기 위해 다음과 같은 요구사항이 발생했다고 가정하겠다. 
-요구사항: 정수형 collection을 입력 받았을 때 모든 원소의 인덱스와 원소를 출력하는 기능
+ 요구사항: 정수형 collection을 입력 받았을 때 모든 원소의 인덱스와 원소를 출력하는 기능
 
 다음은 요구사항을 구현한 코드이다.
 ```kotlin
